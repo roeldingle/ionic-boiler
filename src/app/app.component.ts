@@ -4,61 +4,54 @@ import { Platform, Nav, Config } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { CardsPage } from '../pages/cards/cards';
-import { ContentPage } from '../pages/content/content';
+// import { CardsPage } from '../pages/cards/cards';
+// import { ContentPage } from '../pages/content/content';
+// import { MapPage } from '../pages/map/map';
+// import { MenuPage } from '../pages/menu/menu';
+// import { SearchPage } from '../pages/search/search';
+// import { TabsPage } from '../pages/tabs/tabs';
+
+
 import { FirstRunPage } from '../pages/pages';
-import { ListMasterPage } from '../pages/list-master/list-master';
-import { LoginPage } from '../pages/login/login';
-import { MapPage } from '../pages/map/map';
-import { MenuPage } from '../pages/menu/menu';
-import { SearchPage } from '../pages/search/search';
-import { SettingsPage } from '../pages/settings/settings';
-import { SignupPage } from '../pages/signup/signup';
-import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
+import { SignupPage } from '../pages/signup/signup';
+import { LoginPage } from '../pages/login/login';
+
+import { DashboardPage } from '../pages/dashboard/dashboard';
+import { TeamListPage } from '../pages/team/list/list';
+import { NotificationListPage } from '../pages/notification/list/list';
+import { SettingsPage } from '../pages/settings/settings';
 
 import { Settings } from '../providers/providers';
-
 import { TranslateService } from '@ngx-translate/core'
 
 @Component({
-  template: `<ion-menu [content]="content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Pages</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
-    <ion-content>
-      <ion-list>
-        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-          {{p.title}}
-        </button>
-      </ion-list>
-    </ion-content>
-
-  </ion-menu>
-  <ion-nav #content [root]="rootPage"></ion-nav>`
+  templateUrl: '../pages/layouts/sidemenu.html'
 })
 export class MyApp {
-  rootPage = FirstRunPage;
+  rootPage = DashboardPage;
 
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    { title: 'Tutorial', component: TutorialPage },
-    { title: 'Welcome', component: WelcomePage },
-    { title: 'Tabs', component: TabsPage },
-    { title: 'Cards', component: CardsPage },
-    { title: 'Content', component: ContentPage },
-    { title: 'Login', component: LoginPage },
-    { title: 'Signup', component: SignupPage },
-    { title: 'Map', component: MapPage },
-    { title: 'Master Detail', component: ListMasterPage },
-    { title: 'Menu', component: MenuPage },
+    // { title: 'Tutorial', component: TutorialPage },
+    // { title: 'Welcome', component: WelcomePage },
+    // { title: 'Tabs', component: TabsPage },
+
+    // { title: 'Cards', component: CardsPage },
+    // { title: 'Content', component: ContentPage },
+    // { title: 'Login', component: LoginPage },
+    // { title: 'Signup', component: SignupPage },
+    // { title: 'Map', component: MapPage },
+    // { title: 'Menu', component: MenuPage },
+    // { title: 'Search', component: SearchPage }
+
+    { title: 'Dashboard', component: DashboardPage },
+    { title: 'My Team', component: TeamListPage },
+    { title: 'Notification', component: NotificationListPage },
     { title: 'Settings', component: SettingsPage },
-    { title: 'Search', component: SearchPage }
+    {title: 'Logout', component: null}
   ]
 
   constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, statusBar: StatusBar, splashScreen: SplashScreen) {
@@ -88,9 +81,20 @@ export class MyApp {
     });
   }
 
+
+
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
-  }
+    if(page.component) {
+        this.nav.setRoot(page.component);
+    } else {
+        // Since the component is null, this is the logout option
+        // ...
+
+        // logout logic
+        // ...
+
+        // redirect to home
+        this.nav.setRoot(FirstRunPage);
+    }
+}
 }

@@ -6,10 +6,10 @@ import { Camera } from '@ionic-native/camera';
 
 
 @Component({
-  selector: 'page-item-create',
-  templateUrl: 'item-create.html'
+  selector: 'page-notification-create',
+  templateUrl: 'create.html'
 })
-export class ItemCreatePage {
+export class NotificationCreatePage {
   @ViewChild('fileInput') fileInput;
 
   isReadyToSave: boolean;

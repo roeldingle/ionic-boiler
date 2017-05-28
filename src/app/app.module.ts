@@ -8,9 +8,17 @@ import { MyApp } from './app.component';
 
 import { CardsPage } from '../pages/cards/cards';
 import { ContentPage } from '../pages/content/content';
-import { ItemCreatePage } from '../pages/item-create/item-create';
-import { ItemDetailPage } from '../pages/item-detail/item-detail';
-import { ListMasterPage } from '../pages/list-master/list-master';
+
+/*team*/
+import { TeamListPage } from '../pages/team/list/list';
+import { TeamDetailPage } from '../pages/team/detail/detail';
+import { TeamCreatePage } from '../pages/team/create/create';
+
+/*notification*/
+import { NotificationListPage } from '../pages/notification/list/list';
+import { NotificationDetailPage } from '../pages/notification/detail/detail';
+import { NotificationCreatePage } from '../pages/notification/create/create';
+
 import { LoginPage } from '../pages/login/login';
 import { MapPage } from '../pages/map/map';
 import { MenuPage } from '../pages/menu/menu';
@@ -18,6 +26,8 @@ import { SearchPage } from '../pages/search/search';
 import { SettingsPage } from '../pages/settings/settings';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
+
+import { DashboardPage } from '../pages/dashboard/dashboard';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { WelcomePage } from '../pages/welcome/welcome';
 
@@ -65,9 +75,17 @@ let pages = [
   MyApp,
   CardsPage,
   ContentPage,
-  ItemCreatePage,
-  ItemDetailPage,
-  ListMasterPage,
+
+  /*team*/
+  TeamListPage,
+  TeamDetailPage,
+  TeamCreatePage,
+
+  /*notification*/
+  NotificationListPage,
+  NotificationDetailPage,
+  NotificationCreatePage,
+
   LoginPage,
   MapPage,
   MenuPage,
@@ -75,6 +93,8 @@ let pages = [
   SettingsPage,
   SignupPage,
   TabsPage,
+
+  DashboardPage,
   TutorialPage,
   WelcomePage
 ];

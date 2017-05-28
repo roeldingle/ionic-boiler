@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { Items } from '../../providers/providers';
+import { Items } from '../../../providers/providers';
 
 @Component({
-  selector: 'page-item-detail',
-  templateUrl: 'item-detail.html'
+  selector: 'page-notification-detail',
+  templateUrl: 'detail.html'
 })
-export class ItemDetailPage {
+export class NotificationDetailPage {
   item: any;
 
   constructor(public navCtrl: NavController, navParams: NavParams, items: Items) {
