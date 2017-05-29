@@ -33,6 +33,7 @@ import { WelcomePage } from '../pages/welcome/welcome';
 
 import { Api } from '../providers/api';
 import { Items } from '../mocks/providers/items';
+import { Members } from '../providers/members';
 import { Settings } from '../providers/settings';
 import { User } from '../providers/user';
 
@@ -111,6 +112,7 @@ export function providers() {
   return [
     Api,
     Items,
+    Members,
     User,
     Camera,
     GoogleMaps,
