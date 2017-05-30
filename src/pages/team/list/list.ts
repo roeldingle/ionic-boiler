@@ -4,6 +4,8 @@ import { NavController, ModalController } from 'ionic-angular';
 import { TeamCreatePage } from '../create/create';
 import { TeamDetailPage } from '../detail/detail';
 
+import { Item } from '../models/item';
+
 import {Members} from '../../../providers/members';
 
 @Component({
@@ -14,7 +16,7 @@ import {Members} from '../../../providers/members';
 export class TeamListPage {
   public member: any;
 
-  constructor(public members: Members){
+  constructor(public navCtrl: NavController,public members: Members, public modalCtrl: ModalController){
     this.loadMembers();
   }
 
@@ -23,6 +25,30 @@ export class TeamListPage {
     .then(data => {
       this.member = data;
     });
+  }
+
+  /**
+   * 
+   */
+  openItem(member) {
+    this.navCtrl.push(TeamDetailPage, {
+      item: member
+    });
+  }
+
+
+  /**
+   * 
+   * 
+   */
+  addItem() {
+    let addModal = this.modalCtrl.create(TeamCreatePage);
+    addModal.onDidDismiss(item => {
+      if (member) {
+        this.members.add(item);
+      }
+    })
+    addModal.present();
   }
 
 }

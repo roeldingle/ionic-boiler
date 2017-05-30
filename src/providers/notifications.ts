@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import { Item } from '../models/item';
-
 import { Api } from './api';
 
 /*
@@ -13,13 +11,12 @@ import { Api } from './api';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class Members {
+export class Notifications {
 
   data: any;
   url: string = 'https://randomuser.me/api/';
 
   constructor(public http: Http, public api: Api) {
-
   }
 
   load() {
@@ -41,13 +38,5 @@ export class Members {
         });
       });
     }
-
-  add(item: Item) {
-    this.data.push(item);
-  }
-
-  // delete() {
-  //   this.data.splice(this.items.indexOf(data), 1);
-  // }
 
 }
