@@ -44,7 +44,6 @@ export class TeamListPage {
     addModal.onDidDismiss(item => {
       if (item) {
         this.members.add(item);
-        this.members.load();
       }
     })
     addModal.present();

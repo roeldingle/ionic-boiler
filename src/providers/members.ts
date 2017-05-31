@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { Api } from './api';
@@ -44,6 +44,23 @@ export class Members {
 
   add(item) {
    this.data.push(item);
+   this.postRequest(item);
+  }
+
+   postRequest(item) {
+    var headers = new Headers();
+    headers.append("Accept", 'application/json');
+    headers.append('Content-Type', 'application/x-www-form-urlencoded' );
+    let options = new RequestOptions({ headers: headers });
+ 
+    let postParams = item;
+    
+    this.http.post(this.url + '?items=add_team', postParams, options)
+      .subscribe(data => {
+        console.log(data['_body']);
+       }, error => {
+        console.log(error);// Error getting the data
+      });
   }
 
   // delete() {
