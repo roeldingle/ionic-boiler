@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import { Item } from '../models/item';
-
 import { Api } from './api';
 
 /*
@@ -16,7 +14,7 @@ import { Api } from './api';
 export class Members {
 
   data: any;
-  url: string = 'https://randomuser.me/api/';
+  url: string = 'http://straightarrowasset.com/test/hackaton-goteam/test-api.php';
 
   constructor(public http: Http, public api: Api) {
 
@@ -33,17 +31,19 @@ export class Members {
         // We're using Angular HTTP provider to request the data,
         // then on the response, it'll map the JSON data to a parsed JS object.
         // Next, we process the data and resolve the promise with the new data.
-        this.http.get(this.url + '?results=10')
+        this.http.get(this.url + '?items=team')
           .map(res => res.json())
           .subscribe(data => {
-          this.data = data.results;
+          this.data = data;
           resolve(this.data);
         });
       });
-    }
 
-  add(item: Item) {
-    this.data.push(item);
+
+  }
+
+  add(item) {
+   this.data.push(item);
   }
 
   // delete() {

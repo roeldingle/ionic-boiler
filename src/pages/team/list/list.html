@@ -20,9 +20,9 @@
     <ion-item *ngFor="let mem of member" (click)="openItem(mem)">
  
       <ion-avatar item-left>
-        <img src="{{mem.picture.thumbnail}}">
+        <img src="{{mem.avatar}}">
       </ion-avatar>
-      <h2>{{mem.name.first}} {{mem.name.last}}</h2>
+      <h2>{{mem.name}}</h2>
       <p>{{mem.email}}</p>
       
     </ion-item>

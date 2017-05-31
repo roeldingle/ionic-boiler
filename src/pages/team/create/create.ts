@@ -20,9 +20,9 @@ export class TeamCreatePage {
 
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera) {
     this.form = formBuilder.group({
-      profilePic: [''],
+      avatar: [''],
       name: ['', Validators.required],
-      about: ['']
+      email: ['']
     });
 
     // Watch the form for changes, and
@@ -42,7 +42,7 @@ export class TeamCreatePage {
         targetWidth: 96,
         targetHeight: 96
       }).then((data) => {
-        this.form.patchValue({ 'profilePic': 'data:image/jpg;base64,' + data });
+        this.form.patchValue({ 'avatar': 'data:image/jpg;base64,' + data });
       }, (err) => {
         alert('Unable to take photo');
       })
@@ -56,14 +56,14 @@ export class TeamCreatePage {
     reader.onload = (readerEvent) => {
 
       let imageData = (readerEvent.target as any).result;
-      this.form.patchValue({ 'profilePic': imageData });
+      this.form.patchValue({ 'avatar': imageData });
     };
 
     reader.readAsDataURL(event.target.files[0]);
   }
 
   getProfileImageStyle() {
-    return 'url(' + this.form.controls['profilePic'].value + ')'
+    return 'url(' + this.form.controls['avatar'].value + ')'
   }
 
   /**

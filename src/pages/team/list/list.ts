@@ -4,8 +4,6 @@ import { NavController, ModalController } from 'ionic-angular';
 import { TeamCreatePage } from '../create/create';
 import { TeamDetailPage } from '../detail/detail';
 
-import { Item } from '../models/item';
-
 import {Members} from '../../../providers/members';
 
 @Component({
@@ -44,11 +42,13 @@ export class TeamListPage {
   addItem() {
     let addModal = this.modalCtrl.create(TeamCreatePage);
     addModal.onDidDismiss(item => {
-      if (member) {
+      if (item) {
         this.members.add(item);
+        this.members.load();
       }
     })
     addModal.present();
+
   }
 
 }
